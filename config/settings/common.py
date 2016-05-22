@@ -20,18 +20,12 @@ env = environ.Env()
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
 DJANGO_APPS = (
-    # Default Django apps:
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Useful template tags:
-    # 'django.contrib.humanize',
-
-    # Admin
     'django.contrib.admin',
 )
 THIRD_PARTY_APPS = (
@@ -43,8 +37,11 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'django-example.users',  # custom users app
-    # Your stuff: custom apps go here
+    'django-example.users',
+    'base',
+    'billing',
+    'task'
+
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
