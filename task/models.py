@@ -5,10 +5,11 @@ from base.models import AbstractDateTimeModel
 
 
 class Task(AbstractDateTimeModel):
-    assignee = models.ForeignKey('users.User', related_name='assignee')
+    assignee = models.ForeignKey('users.User', related_name='assignee', null=True)
     created_by = models.ForeignKey('users.User', related_name='created_by')
     description = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
+    money = models.DecimalField(max_digits=7, decimal_places=2, default=0)
 
     def __str__(self):
         return self.title

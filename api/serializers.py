@@ -11,6 +11,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class TaskSerializer(serializers.ModelSerializer):
+    assignee = UserSerializer(read_only=True)
+    created_by = UserSerializer(required=False)
+
     class Meta:
         model = Task
-        fields = ('id', 'title', 'description')
+        fields = ('id', 'title', 'description', 'assignee', 'created_by')
