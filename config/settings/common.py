@@ -40,7 +40,8 @@ LOCAL_APPS = (
     'django-example.users',
     'base',
     'billing',
-    'task'
+    'task',
+    'api'
 
 )
 
