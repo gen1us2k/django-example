@@ -13,7 +13,7 @@ from __future__ import absolute_import, unicode_literals
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3  # (django-example/config/settings/common.py - 3 = django-example/)
-APPS_DIR = ROOT_DIR.path('django-example')
+APPS_DIR = ROOT_DIR.path('django_example')
 
 env = environ.Env()
 
@@ -37,7 +37,8 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'django-example.users',
+    'rest_framework',
+    'django_example.users',
     'base',
     'billing',
     'task',
@@ -63,7 +64,7 @@ MIDDLEWARE_CLASSES = (
 # MIGRATIONS CONFIGURATION
 # ------------------------------------------------------------------------------
 MIGRATION_MODULES = {
-    'sites': 'django-example.contrib.sites.migrations'
+    'sites': 'django_example.contrib.sites.migrations'
 }
 
 # DEBUG
@@ -211,8 +212,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
-ACCOUNT_ADAPTER = 'django-example.users.adapters.AccountAdapter'
-SOCIALACCOUNT_ADAPTER = 'django-example.users.adapters.SocialAccountAdapter'
+ACCOUNT_ADAPTER = 'django_example.users.adapters.AccountAdapter'
+SOCIALACCOUNT_ADAPTER = 'django_example.users.adapters.SocialAccountAdapter'
 
 # Custom user app defaults
 # Select the correct user model
