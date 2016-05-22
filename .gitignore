@@ -1,2 +1,2 @@
 .idea
-.py[o,c]
+*.py[o,c]

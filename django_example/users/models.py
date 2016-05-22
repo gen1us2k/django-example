@@ -36,10 +36,13 @@ class User(AbstractUser):
     def update_balance(self, reason, money, **kwargs):
         from billing.models import MoneyLog
         ml_filter = {}
+        task = kwargs.get('task', None)
         ml_filter['reason'] = reason
+        ml_filter['user'] = self
         ml_filter['debit'] = math.fabs(money) if money < 0 else 0
         ml_filter['credit'] = math.fabs(money) if money > 0 else 0
         ml_filter['money'] = money
+        ml_filter['task'] = task
         current_balance = User.objects.select_for_update().get(pk=self.pk).balance
         ml_filter['balance'] = current_balance + Decimal(money)
 
@@ -51,6 +54,6 @@ class User(AbstractUser):
             except IntegrityError:
                 ml = MoneyLog.objects.get(**ml_filter)
 
-            User.objects.select_for_update().filter(pk=self.pk).update(
-                balance=F('balance') + Decimal(money)
-            )
+            # User.objects.select_for_update().filter(pk=self.pk).update(
+            #     balance=F('balance') + Decimal(money)
+            # )
