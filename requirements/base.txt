@@ -42,3 +42,5 @@ redis>=2.10.0
 
 
 # Your custom requirements go here
+django-filter==0.13.0
+djangorestframework==3.3.3
